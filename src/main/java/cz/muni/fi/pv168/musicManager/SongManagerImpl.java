@@ -1,6 +1,6 @@
 package cz.muni.fi.pv168.musicManager;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Hany on 5.3.2014.
@@ -24,7 +24,7 @@ public class SongManagerImpl implements SongManager {
     @Override
     public void deleteSong(Song song) {
         if (song == null) {
-            throw new NullPointerException("In deleteSong: song is null");
+            throw new IllegalArgumentException("In deleteSong: song is null");
         }
 
         //TODO: Delete from DB.
@@ -33,21 +33,21 @@ public class SongManagerImpl implements SongManager {
     @Override
     public void updateSong(Song song) {
         if (song == null) {
-            throw new NullPointerException("In updateSong: song is null");
+            throw new IllegalArgumentException("In updateSong: song is null");
         }
 
         //TODO: Update song in DB.
     }
 
     @Override
-    public Collection<Song> getAllSongs() {
+    public List<Song> getAllSongs() {
         return null;
     }
 
     @Override
     public Song getSongByName(String name) {
         if (name == null) {
-            throw new NullPointerException("In getSongByName: song is null");
+            throw new IllegalArgumentException("In getSongByName: name is null");
         }
 
         //TODO: Find song with name.

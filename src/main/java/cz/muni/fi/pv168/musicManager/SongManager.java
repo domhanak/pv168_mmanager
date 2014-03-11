@@ -1,6 +1,6 @@
 package cz.muni.fi.pv168.musicManager;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Hany on 5.3.2014.
@@ -13,7 +13,7 @@ public interface SongManager {
 
     public void updateSong(Song song);
 
-    public Collection<Song> getAllSongs();
+    public List<Song> getAllSongs();
 
     public Song getSongByName(String name);
 

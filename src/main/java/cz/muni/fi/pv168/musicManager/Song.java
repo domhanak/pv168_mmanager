@@ -1,7 +1,9 @@
 package cz.muni.fi.pv168.musicManager;
 
 /**
- * Created by Hany on 5.3.2014.
+ * Represents a Song in DB.
+ *
+ * Created by Dominik Hanak on 5.3.2014.
  */
 public class Song {
     private long songId;
@@ -10,15 +12,28 @@ public class Song {
     private int rank;
     private int length;
 
-    public Song() {
+    public Song() {}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Song song = (Song) obj;
+
+        if (songId != song.songId) return false;
+
+        return true;
     }
 
-    public Song(long songId, String name, int track, int rank, int length) {
-        this.songId = songId;
-        this.name = name;
-        this.track = track;
-        this.rank = rank;
-        this.length = length;
+    @Override
+    public int hashCode() {
+        return (int) (songId ^ (songId >>> 32));
     }
 
     public int getLength() {
