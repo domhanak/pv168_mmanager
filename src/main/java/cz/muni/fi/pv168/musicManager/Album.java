@@ -1,7 +1,11 @@
 package cz.muni.fi.pv168.musicManager;
 
 /**
+<<<<<<< HEAD
  * Created by Hany, Adam on 5.3.2014.
+=======
+ * Created by Hany on 5.3.2014.
+>>>>>>> 6a34b0e0bd627fc7cface62aa75227fa31f3e247
  */
 public class Album {
     private long albumId;
