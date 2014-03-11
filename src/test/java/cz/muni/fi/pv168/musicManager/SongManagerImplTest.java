@@ -32,7 +32,7 @@ public class SongManagerImplTest {
     }
 
     @Test
-    public void testDeleteSong() {
+    public void testUpdateSong() {
         Song song = newSong(0, "Raz,dva", 0, 0, 845);
         Song song2 = newSong(1, "Raz,dva,tri", 1, 2, 846);
         songManager.createSong(song);
