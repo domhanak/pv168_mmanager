@@ -15,6 +15,18 @@ public class Song {
     public Song() {}
 
     @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Song{");
+        sb.append("songId=").append(songId);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", track=").append(track);
+        sb.append(", rank=").append(rank);
+        sb.append(", length=").append(length);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;

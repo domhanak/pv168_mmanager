@@ -13,7 +13,6 @@ import static org.junit.Assert.*;
 public class SongManagerImplTest {
 
     SongManagerImpl songManager;
-    Song song;
 
     @Before
     public void setUp() throws Exception {

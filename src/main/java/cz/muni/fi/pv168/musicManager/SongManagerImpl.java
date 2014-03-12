@@ -7,7 +7,10 @@ import java.util.List;
  */
 public class SongManagerImpl implements SongManager {
 
-    public SongManagerImpl() {
+    private SongManagerImpl() {}
+
+    public static SongManager getSongManager() {
+        return 
     }
 
     @Override
@@ -15,6 +18,7 @@ public class SongManagerImpl implements SongManager {
         if (song == null) {
             throw new NullPointerException("In createSong: song is null");
         }
+
 
         //TODO: Save to DB.
 
