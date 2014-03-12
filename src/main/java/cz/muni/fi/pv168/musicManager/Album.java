@@ -16,14 +16,6 @@ public class Album {
 
     public Album() {}
 
-    public Album(long albumId, String name, String genre, int year, String artist) {
-        this.albumId = albumId;
-        this.name = name;
-        this.genre = genre;
-        this.year = year;
-        this.artist = artist;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

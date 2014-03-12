@@ -82,10 +82,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Album.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Album.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/musicManager/Album.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="358" selection-end="358" vertical-scroll-proportion="0.44041452" vertical-offset="119" max-vertical-offset="1088">
+            <state line="21" column="48" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="1088">
               <folding />
             </state>
           </provider>
@@ -103,10 +103,10 @@
       <file leaf-file-name="SongManagerImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/musicManager/SongManagerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="21" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1343">
+            <state line="5" column="13" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1377">
               <folding>
-                <element signature="e#321#322#0" expanded="true" />
-                <element signature="e#356#357#0" expanded="true" />
+                <element signature="e#338#339#0" expanded="true" />
+                <element signature="e#373#374#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -121,10 +121,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SongManagerImplTest.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SongManagerImplTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/pv168/musicManager/SongManagerImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="211" column="29" selection-start="6364" selection-end="6364" vertical-scroll-proportion="0.0" vertical-offset="2317" max-vertical-offset="4080">
+            <state line="230" column="31" selection-start="6963" selection-end="6963" vertical-scroll-proportion="4.0829015" vertical-offset="2249" max-vertical-offset="4063">
               <folding />
             </state>
           </provider>
@@ -153,9 +153,9 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/musicManager/Song.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/musicManager/SongManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/musicManager/Album.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/pv168/musicManager/SongManagerImplTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/musicManager/SongManagerImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/musicManager/Album.java" />
       </list>
     </option>
   </component>
@@ -609,12 +609,12 @@
       <created>1394011637589</created>
       <updated>1394011637589</updated>
       <workItem from="1394011648036" duration="3982000" />
-      <workItem from="1394615393399" duration="3057000" />
+      <workItem from="1394615393399" duration="3195000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7039000" />
+    <option name="totallyTimeSpent" value="7177000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -701,8 +701,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="0" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1258">
           <folding>
-            <element signature="e#321#322#0" expanded="true" />
-            <element signature="e#356#357#0" expanded="true" />
+            <element signature="e#338#339#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -741,13 +741,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/musicManager/AlbumManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="3" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1377">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/musicManager/Song.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="23" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
@@ -762,16 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/musicManager/SongManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="21" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1343">
-          <folding>
-            <element signature="e#321#322#0" expanded="true" />
-            <element signature="e#356#357#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/pv168/musicManager/AlbumManagerImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="3" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1360">
@@ -779,16 +762,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/pv168/musicManager/SongManagerImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/musicManager/Album.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="211" column="29" selection-start="6364" selection-end="6364" vertical-scroll-proportion="0.0" vertical-offset="2317" max-vertical-offset="4080">
+        <state line="21" column="48" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="1088">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/musicManager/Album.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/musicManager/SongManagerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="358" selection-end="358" vertical-scroll-proportion="0.44041452" vertical-offset="119" max-vertical-offset="1088">
+        <state line="5" column="13" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1377">
+          <folding>
+            <element signature="e#338#339#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/musicManager/AlbumManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="3" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1377">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/pv168/musicManager/SongManagerImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="230" column="31" selection-start="6963" selection-end="6963" vertical-scroll-proportion="4.0829015" vertical-offset="2249" max-vertical-offset="4063">
           <folding />
         </state>
       </provider>
