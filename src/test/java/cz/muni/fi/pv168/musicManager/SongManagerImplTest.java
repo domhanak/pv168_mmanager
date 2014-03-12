@@ -8,20 +8,22 @@ import java.util.*;
 import static org.junit.Assert.*;
 
 /**
+ * Implementation of SongManager.
+ *
  * Created by Hany on 5.3.2014.
  */
 public class SongManagerImplTest {
 
-    SongManagerImpl songManager;
+    SongManager songManager;
 
     @Before
     public void setUp() throws Exception {
-        songManager = new SongManagerImpl();
+        songManager = SongManagerImpl.getSongManager();
     }
 
     @Test
     public void testCreateSong() {
-        Song song = newSong(0, "Raz,dva", 0, 0, 845);
+        Song song = newSong("Raz,dva", 0, 0, 845);
         songManager.createSong(song);
 
         Long songId = song.getSongId();
@@ -32,8 +34,8 @@ public class SongManagerImplTest {
 
     @Test
     public void testUpdateSong() {
-        Song song = newSong(0, "Raz,dva", 0, 0, 845);
-        Song song2 = newSong(1, "Raz,dva,tri", 1, 2, 846);
+        Song song = newSong("Raz,dva", 0, 0, 845);
+        Song song2 = newSong("Raz,dva,tri", 1, 2, 846);
         songManager.createSong(song);
         songManager.createSong(song2);
         Long songId = song.getSongId();
@@ -81,8 +83,8 @@ public class SongManagerImplTest {
 
     @Test
     public void textDeleteSong() {
-        Song song = newSong(0, "Raz,dva", 0, 0, 845);
-        Song song2 = newSong(1, "Raz,dva,tri", 1, 2, 846);
+        Song song = newSong("Raz,dva", 0, 0, 845);
+        Song song2 = newSong( "Raz,dva,tri", 1, 2, 846);
 
         songManager.createSong(song);
         songManager.createSong(song2);
@@ -98,7 +100,7 @@ public class SongManagerImplTest {
 
     @Test
     public void testDeleteSongWithWrongAttributes() throws Exception {
-        Song song = newSong(0, "Raz, dva", 3, 14, 845);
+        Song song = newSong("Raz, dva", 3, 14, 845);
 
         try {
             songManager.deleteSong(null);
@@ -121,7 +123,7 @@ public class SongManagerImplTest {
     @Test
     public void testUpdateSongWithWrongAtrributtes() throws Exception {
 
-        Song song = newSong(0, "Raz, dva", 3, 14, 845);
+        Song song = newSong("Raz, dva", 3, 14, 845);
         songManager.createSong(song);
         Long songId = song.getSongId();
 
@@ -164,38 +166,38 @@ public class SongManagerImplTest {
             fail("IllegalArgumentException not thrown.");
         } catch (IllegalArgumentException ex) {};
 
-        Song song = newSong(0, "Raz, dva", 3, 14, 845);
+        Song song = newSong("Raz, dva", 3, 14, 845);
         song.setSongId(1l);
         try {
             songManager.createSong(song);
             fail();
         } catch (IllegalArgumentException ex) {};
 
-        song = newSong(-1, "Raz, dva", 3, 14, 845);
+        song = newSong("Raz, dva", 3, 14, 845);
         try {
             songManager.createSong(song);
             fail();
         } catch (IllegalArgumentException ex) {};
 
-        song = newSong(0, "", 3, 14, 845);
+        song = newSong("", 3, 14, 845);
         try {
             songManager.createSong(song);
             fail();
         } catch (IllegalArgumentException ex) {};
 
-        song = newSong(0, "Raz, dva", -1, 14, 845);
+        song = newSong("Raz, dva", -1, 14, 845);
         try {
             songManager.createSong(song);
             fail();
         } catch (IllegalArgumentException ex) {};
 
-        song = newSong(0, "Raz, dva", 3, -1, 845);
+        song = newSong("Raz, dva", 3, -1, 845);
         try {
             songManager.createSong(song);
             fail();
         } catch (IllegalArgumentException ex) {};
 
-        song = newSong(0, "Raz, dva", 3, 14, -1);
+        song = newSong("Raz, dva", 3, 14, -1);
         try {
             songManager.createSong(song);
             fail();
@@ -206,8 +208,8 @@ public class SongManagerImplTest {
     public void testGetAllSongs() {
         assertTrue(songManager.getAllSongs().isEmpty());
 
-        Song song = newSong(0, "Raz,dva", 0, 0, 845);
-        Song song2 = newSong(1, "Raz,dva,tri", 1, 2, 846);
+        Song song = newSong("Raz,dva", 0, 0, 845);
+        Song song2 = newSong("Raz,dva,tri", 1, 2, 846);
 
         songManager.createSong(song);
         songManager.createSong(song2);
@@ -221,14 +223,12 @@ public class SongManagerImplTest {
         assertEquals(expected, actual);
     }
 
-    private static Song newSong(long albumId, String name, int rank, int track, int length) {
+    private static Song newSong( String name, int rank, int track, int length) {
         Song song = new Song();
-        song.setSongId(albumId);
         song.setName(name);
         song.setRank(rank);
         song.setTrack(track);
         song.setLength(length);
-
         return song;
     }
 

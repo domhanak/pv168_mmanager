@@ -3,20 +3,23 @@ package cz.muni.fi.pv168.musicManager;
 import java.util.List;
 
 /**
+ * UNFINISHED
+ *
  * Created by Hany on 5.3.2014.
  */
 public class SongManagerImpl implements SongManager {
+    private static final SongManager SONG_MANAGER = new SongManagerImpl();
 
     private SongManagerImpl() {}
 
-    public static SongManager getSongManager() {
-        return 
+    public static final SongManager getSongManager() {
+        return SONG_MANAGER;
     }
 
     @Override
     public Song createSong(Song song) {
         if (song == null) {
-            throw new NullPointerException("In createSong: song is null");
+            throw new IllegalArgumentException("In createSong: song is null");
         }
 
 
