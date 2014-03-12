@@ -6,6 +6,8 @@ import java.util.List;
  * Created by Adam on 6.3.14.
  */
 public class AlbumManagerImpl implements AlbumManager {
+
+
     @Override
     public Album createAlbum(Album album) {
         if (album == null){

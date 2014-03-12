@@ -1,5 +1,8 @@
 package cz.muni.fi.pv168.musicManager;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.List;
 
 /**
@@ -9,6 +12,7 @@ import java.util.List;
  */
 public class SongManagerImpl implements SongManager {
     private static final SongManager SONG_MANAGER = new SongManagerImpl();
+    private final static Logger log = LoggerFactory.getLogger(SongManagerImpl.class);
 
     private SongManagerImpl() {}
 
