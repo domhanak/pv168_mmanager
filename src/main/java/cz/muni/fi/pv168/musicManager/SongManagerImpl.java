@@ -8,13 +8,12 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.util.List;
 
 /**
- * Song manager provides communication between DB.
+ * Song manager provides communication between DB using SpringJDBC.
  * Contains basic operations needed to manipulate the DB of  songs.
  *
  * Created by Hany on 5.3.2014.
@@ -52,6 +51,7 @@ public class SongManagerImpl implements SongManager {
         if (song.getLength() < 0) {
             throw new IllegalArgumentException("In createSong: length si negative.");
         }
+
         log.debug("Create song {}", song);
         SimpleJdbcInsert insertSong = new SimpleJdbcInsert(jdbc)
                 .withTableName("songs").usingGeneratedKeyColumns("id");
@@ -77,6 +77,7 @@ public class SongManagerImpl implements SongManager {
         if (song.getId() < 0) {
             throw new IllegalArgumentException("In deleteSong: song id < 0");
         }
+
         log.debug("deleteSong {}", song);
         jdbc.update("DELETE FROM SONGS WHERE id=?", song.getId());
     }
@@ -99,12 +100,12 @@ public class SongManagerImpl implements SongManager {
         if (song.getLength() < 0) {
             throw new IllegalArgumentException("updateSong: length of song < 0");
         }
+
         log.debug("updateSong {}" , song);
         jdbc.update("UPDATE SONGS SET name=?, rank=?, track=?, length=?",
                 song.getName(), song.getRank(), song.getTrack(), song.getLength());
     }
 
-    @Transactional
     @Override
     public List<Song> getAllSongs()
     {
@@ -112,22 +113,22 @@ public class SongManagerImpl implements SongManager {
     }
 
     @Override
-    public Song getSongByName(String desName) throws SongException
+    public Song getSongByName(String name) throws SongException
     {
-        if (desName == null) {
+        if (name == null) {
             throw new IllegalArgumentException("In getSongById: name is null!");
         }
 
-        if (desName.isEmpty()) {
+        if (name.isEmpty()) {
             throw new IllegalArgumentException("In getSongById: name is empty!");
         }
 
-        log.debug("getSongByName {}", desName);
-      //  try {
-            return jdbc.queryForObject("SELECT * FROM SONGS WHERE name=?", songMapper, desName);
-    /*    } catch (EmptyResultDataAccessException ex) {
+        log.debug("getSongByName {}", name);
+        try {
+            return jdbc.queryForObject("SELECT * FROM SONGS WHERE name=?", songMapper, name);
+        } catch (EmptyResultDataAccessException ex) {
             return null;
-        }*/
+        }
     }
 
     @Override
@@ -136,6 +137,7 @@ public class SongManagerImpl implements SongManager {
         if (id < 0) {
             throw new IllegalArgumentException("In getSongById: id < 0!");
         }
+
         log.debug("getSongById {}", id);
         try {
             return jdbc.queryForObject("SELECT * FROM SONGS WHERE id=?", songMapper, id);
@@ -144,7 +146,8 @@ public class SongManagerImpl implements SongManager {
         }
     }
 
-    private RowMapper<Song> songMapper = (rs, rowNum) -> {
+    private RowMapper<Song> songMapper = (rs, rowNum) ->
+    {
         Song song = new Song();
         song.setId(rs.getLong("id"));
         song.setName(rs.getString("name"));

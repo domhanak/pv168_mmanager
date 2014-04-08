@@ -20,6 +20,4 @@ public interface SongManager {
     public Song getSongByName(String name) throws SongException;
 
     public Song getSongById(long id) throws SongException;
-
-
 }

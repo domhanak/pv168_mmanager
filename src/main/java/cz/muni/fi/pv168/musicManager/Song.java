@@ -1,6 +1,5 @@
 package cz.muni.fi.pv168.musicManager;
 
-
 /**
  * Represents a Song.
  *
