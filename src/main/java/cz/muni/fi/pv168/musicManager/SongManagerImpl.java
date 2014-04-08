@@ -36,9 +36,6 @@ public class SongManagerImpl implements SongManager {
             log.error("Tried to create song that is null. {}", song);
             throw new IllegalArgumentException("In createSong: song is null");
         }
-        if (song.getId() != null) {
-            throw new IllegalArgumentException("In createSong: song id is already set");
-        }
         if (song.getName().isEmpty()) {
             throw new IllegalArgumentException("In createSong: song's name is empty.");
         }
@@ -132,7 +129,7 @@ public class SongManagerImpl implements SongManager {
     }
 
     @Override
-    public Song getSongById(long id) throws SongException
+    public Song getSongById(Long id) throws SongException
     {
         if (id < 0) {
             throw new IllegalArgumentException("In getSongById: id < 0!");

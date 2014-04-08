@@ -15,6 +15,18 @@ public class Album {
     public Album() {}
 
     @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Album{");
+        sb.append("albumId=").append(albumId);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", genre='").append(genre).append('\'');
+        sb.append(", year=").append(year);
+        sb.append(", artist='").append(artist).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Album)) return false;

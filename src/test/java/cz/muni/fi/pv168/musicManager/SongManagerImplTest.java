@@ -149,17 +149,7 @@ public class SongManagerImplTest {
     @Test
     public void testAddSongWithWrongAttributes() throws Exception
     {
-        try {
-            songManager.getSongById(-1);
-            fail("IllegalArgumentException not thrown.");
-        } catch (IllegalArgumentException ex) {}
-
         Song song = newSong("Raz, dva", 3, 14, 845);
-        song.setId(1l);
-        try {
-            songManager.createSong(song);
-            fail();
-        } catch (IllegalArgumentException ex) {}
 
         song = newSong("", 3, 14, 845);
         try {
