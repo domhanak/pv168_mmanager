@@ -9,17 +9,17 @@ import java.util.List;
  */
 public interface SongManager {
 
-    public Song createSong(Song song);
+    public Song createSong(Song song) throws SongException;
 
-    public void deleteSong(Song song);
+    public void deleteSong(Song song) throws SongException;
 
-    public void updateSong(Song song);
+    public void updateSong(Song song) throws SongException;
 
-    public List<Song> getAllSongs();
+    public List<Song> getAllSongs() throws SongException;
 
-    public Song getSongByName(String name);
+    public Song getSongByName(String name) throws SongException;
 
-    public Song getSongById(long id);
+    public Song getSongById(long id) throws SongException;
 
 
 }
