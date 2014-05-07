@@ -5,11 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     <groupId>cz.muni.fi.pv168</groupId>
     <artifactId>musicmanager</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
     <name>Music business logic in jdbc</name>
+=======
+    <groupId>musicmanager</groupId>
+    <artifactId>musicmanager</artifactId>
+    <version>1.0-SNAPSHOT</version>
+>>>>>>> 207f837dd8a649fc3ff7cb681cb1d2bc3b77b5c5
 =======
     <groupId>musicmanager</groupId>
     <artifactId>musicmanager</artifactId>
