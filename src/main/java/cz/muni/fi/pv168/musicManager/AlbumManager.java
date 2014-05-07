@@ -6,17 +6,19 @@ import java.util.List;
  */
 public interface AlbumManager {
 
-    public Album createAlbum(Album album);
+    public Album createAlbum(Album album) throws AlbumException;
 
-    public void deleteAlbum(Album album);
+    public void deleteAlbum(Album album) throws AlbumException;
 
-    public Album getAlbumById(long albumId);
+    public Album getAlbumById(long albumId) throws AlbumException;
 
-    public void updateAlbum(Album album);
+    public void updateAlbum(Album album) throws AlbumException;
 
-    public List<Album> findAlbumsByArtist(String artist);
+    public List<Album> findAlbumsByArtist(String artist) throws AlbumException;
 
-    public List<Album> findAlbumsByGenre(String genre);
+    public List<Album> findAlbumsByGenre(String genre) throws AlbumException;
 
-    public List<Album> findAlbumsBetweenYears(int fromYear, int toYear);
+    public List<Album> findAlbumsBetweenYears(int fromYear, int toYear) throws AlbumException;
+
+    List<Album> findAllAlbums() throws AlbumException;
 }

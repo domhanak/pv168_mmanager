@@ -1,11 +1,9 @@
 package cz.muni.fi.pv168.musicManager;
 
 /**
-<<<<<<< HEAD
- * Created by Hany, Adam on 5.3.2014.
-=======
- * Created by Hany on 5.3.2014.
->>>>>>> 6a34b0e0bd627fc7cface62aa75227fa31f3e247
+ * Represents entity Album.
+ *
+ * @author Adam Ryvola
  */
 public class Album {
     private long albumId;
@@ -15,6 +13,18 @@ public class Album {
     private String artist;
 
     public Album() {}
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Album{");
+        sb.append("albumId=").append(albumId);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", genre='").append(genre).append('\'');
+        sb.append(", year=").append(year);
+        sb.append(", artist='").append(artist).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 
     @Override
     public boolean equals(Object o) {

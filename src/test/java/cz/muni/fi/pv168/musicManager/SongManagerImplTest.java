@@ -1,50 +1,55 @@
 package cz.muni.fi.pv168.musicManager;
 
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
 /**
- * Implementation of SongManager.
- *
- * Created by Hany on 5.3.2014.
+ * Unit tests for Song manager using Spring.
+ * <p/>
+ * Created by Dominik and Adam.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {Main.SpringConfig.class})
+@Transactional
 public class SongManagerImplTest {
 
-    SongManager songManager;
-
-    @Before
-    public void setUp() throws Exception {
-        songManager = SongManagerImpl.getSongManager();
-    }
+    @Autowired
+    private SongManager songManager;
 
     @Test
-    public void testCreateSong() {
+    public void testCreateSong() throws SongException {
         Song song = newSong("Raz,dva", 0, 0, 845);
         songManager.createSong(song);
 
-        Long songId = song.getSongId();
-        Song result = songManager.getSongById(songId);
+        Song result = songManager.getSongById(song.getId());
+
         assertEquals(song, result);
         assertNotSame(song, result);
     }
 
     @Test
-    public void testUpdateSong() {
+    public void testUpdateSong() throws SongException {
         Song song = newSong("Raz,dva", 0, 0, 845);
-        Song song2 = newSong("Raz,dva,tri", 1, 2, 846);
+
         songManager.createSong(song);
-        songManager.createSong(song2);
-        Long songId = song.getSongId();
+        Long songId = song.getId();
 
         song = songManager.getSongById(songId);
         song.setTrack(45);
         songManager.updateSong(song);
         assertEquals(45, song.getTrack());
-        assertEquals(0 , song.getRank());
+        assertEquals(0, song.getRank());
         assertEquals(845, song.getLength());
         assertEquals("Raz,dva", song.getName());
 
@@ -52,23 +57,15 @@ public class SongManagerImplTest {
         song.setName("Osem");
         songManager.updateSong(song);
         assertEquals(45, song.getTrack());
-        assertEquals(0 , song.getRank());
+        assertEquals(0, song.getRank());
         assertEquals(845, song.getLength());
         assertEquals("Osem", song.getName());
-
-        song = songManager.getSongById(songId);
-        song.setName(null);
-        songManager.updateSong(song);
-        assertEquals(45, song.getTrack());
-        assertEquals(0 , song.getRank());
-        assertEquals(845, song.getLength());
-        assertNull(song.getName());
 
         song = songManager.getSongById(songId);
         song.setRank(4);
         songManager.updateSong(song);
         assertEquals(45, song.getTrack());
-        assertEquals(4 , song.getRank());
+        assertEquals(4, song.getRank());
         assertEquals(845, song.getLength());
         assertEquals("Osem", song.getName());
 
@@ -76,26 +73,26 @@ public class SongManagerImplTest {
         song.setLength(360);
         songManager.updateSong(song);
         assertEquals(45, song.getTrack());
-        assertEquals(0 , song.getRank());
+        assertEquals(4, song.getRank());
         assertEquals(360, song.getLength());
         assertEquals("Osem", song.getName());
     }
 
     @Test
-    public void textDeleteSong() {
+    public void testDeleteSong() throws SongException {
         Song song = newSong("Raz,dva", 0, 0, 845);
-        Song song2 = newSong( "Raz,dva,tri", 1, 2, 846);
+        Song song2 = newSong("Raz,dva,tri", 1, 2, 846);
 
         songManager.createSong(song);
         songManager.createSong(song2);
 
-        assertNotNull(songManager.getSongById(song.getSongId()));
-        assertNotNull(songManager.getSongById(song2.getSongId()));
+        assertNotNull(songManager.getSongById(song.getId()));
+        assertNotNull(songManager.getSongById(song2.getId()));
 
         songManager.deleteSong(song);
 
-        assertNull(songManager.getSongById(song.getSongId()));
-        assertNotNull(songManager.getSongById(song2.getSongId()));
+        assertNull(songManager.getSongById(song.getId()));
+        assertNotNull(songManager.getSongById(song2.getId()));
     }
 
     @Test
@@ -105,107 +102,84 @@ public class SongManagerImplTest {
         try {
             songManager.deleteSong(null);
             fail("IllegalArgumentException not thrown.");
-        } catch (IllegalArgumentException ex) {};
+        } catch (IllegalArgumentException ex) {
+        }
 
         try {
-            song.setSongId(-1);
+            song.setId(-1);
             songManager.deleteSong(song);
             fail("IllegalArgumentException not thrown.");
-        } catch (IllegalArgumentException ex) {};
-
-        try {
-            song.setSongId(1l);
-            songManager.deleteSong(song);
-            fail("IllegalArgumentException not thrown.");
-        } catch (IllegalArgumentException ex) {};
+        } catch (IllegalArgumentException ex) {
+        }
     }
 
     @Test
-    public void testUpdateSongWithWrongAtrributtes() throws Exception {
+    public void testUpdateSongWithWrongAttributes() throws Exception
+    {
 
         Song song = newSong("Raz, dva", 3, 14, 845);
         songManager.createSong(song);
-        Long songId = song.getSongId();
+        Long songId = song.getId();
 
         try {
             songManager.updateSong(null);
             fail("IllegalArgumentException not thrown.");
-        } catch (IllegalArgumentException ex) {};
-
-        try {
-            song = songManager.getSongById(songId);
-            song.setSongId(songId - 1);
-            songManager.updateSong(song);
-            fail();
-        } catch (IllegalArgumentException ex) {};
+        } catch (IllegalArgumentException ex) {}
 
         try {
             song = songManager.getSongById(songId);
             song.setRank(-1);
             songManager.updateSong(song);
-        } catch (IllegalArgumentException ex) {};
+        } catch (IllegalArgumentException ex) {}
 
         try {
             song = songManager.getSongById(songId);
             song.setTrack(-1);
             songManager.updateSong(song);
-        } catch (IllegalArgumentException ex) {};
+        } catch (IllegalArgumentException ex) {}
 
         try {
             song = songManager.getSongById(songId);
             song.setLength(-1);
             songManager.updateSong(song);
-        } catch (IllegalArgumentException ex) {};
+        } catch (IllegalArgumentException ex) {}
     }
 
 
     @Test
-    public void testAddSongWithWrongAttributes() throws Exception {
-        try {
-            songManager.getSongById(-1);
-            fail("IllegalArgumentException not thrown.");
-        } catch (IllegalArgumentException ex) {};
-
+    public void testAddSongWithWrongAttributes() throws Exception
+    {
         Song song = newSong("Raz, dva", 3, 14, 845);
-        song.setSongId(1l);
-        try {
-            songManager.createSong(song);
-            fail();
-        } catch (IllegalArgumentException ex) {};
-
-        song = newSong("Raz, dva", 3, 14, 845);
-        try {
-            songManager.createSong(song);
-            fail();
-        } catch (IllegalArgumentException ex) {};
 
         song = newSong("", 3, 14, 845);
         try {
             songManager.createSong(song);
             fail();
-        } catch (IllegalArgumentException ex) {};
+        } catch (IllegalArgumentException ex) {}
 
         song = newSong("Raz, dva", -1, 14, 845);
         try {
             songManager.createSong(song);
             fail();
-        } catch (IllegalArgumentException ex) {};
+        } catch (IllegalArgumentException ex) {}
 
         song = newSong("Raz, dva", 3, -1, 845);
         try {
             songManager.createSong(song);
             fail();
-        } catch (IllegalArgumentException ex) {};
+        } catch (IllegalArgumentException ex) {}
 
         song = newSong("Raz, dva", 3, 14, -1);
         try {
             songManager.createSong(song);
             fail();
-        } catch (IllegalArgumentException ex) {};
+        } catch (IllegalArgumentException ex) {}
     }
 
+
     @Test
-    public void testGetAllSongs() {
+    public void testGetAllSongs() throws SongException
+    {
         assertTrue(songManager.getAllSongs().isEmpty());
 
         Song song = newSong("Raz,dva", 0, 0, 845);
@@ -214,16 +188,29 @@ public class SongManagerImplTest {
         songManager.createSong(song);
         songManager.createSong(song2);
 
-        List <Song> expected = Arrays.asList(song, song2);
-        List <Song> actual = songManager.getAllSongs();
+        List<Song> expected = Arrays.asList(song, song2);
+        List<Song> actual = songManager.getAllSongs();
 
         Collections.sort(actual, idComparator);
-        Collections.sort(expected , idComparator);
+        Collections.sort(expected, idComparator);
 
         assertEquals(expected, actual);
     }
 
-    private static Song newSong( String name, int rank, int track, int length) {
+    @Test
+    public void testGetSongByName() throws SongException
+    {
+        Song song = newSong("Raz,dva", 0, 0, 845);
+
+        songManager.createSong(song);
+        Song result = songManager.getSongByName("Raz,dva");
+
+        assertEquals(song, result);
+    }
+
+
+    private static Song newSong(String name, int rank, int track, int length)
+    {
         Song song = new Song();
         song.setName(name);
         song.setRank(rank);
@@ -233,10 +220,9 @@ public class SongManagerImplTest {
     }
 
     private static Comparator<Song> idComparator = new Comparator<Song>() {
-
         @Override
         public int compare(Song object1, Song object2) {
-            return Long.valueOf(object1.getSongId()).compareTo(Long.valueOf(object2.getSongId()));
+            return Long.valueOf(object1.getId()).compareTo(Long.valueOf(object2.getId()));
         }
     };
 }
